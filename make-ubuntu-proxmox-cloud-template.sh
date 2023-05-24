@@ -21,7 +21,7 @@ pushd "${WORK_DIR}"
 
 wget "https://cloud-images.ubuntu.com/${UBUNTU_VERSION}/current/${UBUNTU_VERSION}-server-cloudimg-amd64.img"
 
-qm create "${VM_ID}" --memory 2048 --core 2 --name "${UBUNTU_VERSION}-cloud" --net0 virtio,bridge=vmbr0,firewall=1,trunks=40
+qm create "${VM_ID}" --memory 2048 --core 2 --name "${UBUNTU_VERSION}-cloud" --net0 virtio,bridge=vmbr0,firewall=1,tag=40
 
 qm importdisk "${VM_ID}" "${UBUNTU_VERSION}-server-cloudimg-amd64.img" data-lvm
 qm set "${VM_ID}" --scsihw virtio-scsi-pci --scsi0 data-lvm:vm-"${VM_ID}"-disk-0
