@@ -1,0 +1,41 @@
+---
+
+name: Run linters
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+  push:
+    branches:
+      - '**'
+    tags:
+      - '!**'
+
+jobs:
+  shellcheck:
+    # This runs `shellcheck`: https://www.shellcheck.net
+    name: Shell Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          severity: style
+  shfmt:
+    # This runs `shfmt`: https://github.com/mvdan/sh and `checkbashisms`: https://linux.die.net/man/1/checkbashisms
+    name: Shell Formatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run shfmt and checkbashisms
+        uses: luizm/action-sh-checker@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHFMT_OPTS: --simplify --indent 2
+        with:
+          sh_checker_shellcheck_disable: true
+          sh_checker_shfmt_disable: false
+          sh_checker_checkbashisms_enable: true
