@@ -30,7 +30,7 @@ qm set "${VM_ID}" --boot c --bootdisk scsi0
 qm resize "${VM_ID}" scsi0 +16G
 qm set "${VM_ID}" --ide2 data-lvm:cloudinit
 qm set "${VM_ID}" --serial0 socket --vga serial0
-qm set "${VM_ID}" --sshkey "${script_dir}/id_rsa.pub"
+qm set "${VM_ID}" --sshkey "${script_dir}/../id_rsa.pub"
 qm set "${VM_ID}" --ciuser "damien"
 qm set "${VM_ID}" --ipconfig0 ip=dhcp
 
