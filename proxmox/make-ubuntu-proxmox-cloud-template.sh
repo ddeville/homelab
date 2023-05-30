@@ -33,6 +33,7 @@ qm set "${VM_ID}" --serial0 socket --vga serial0
 qm set "${VM_ID}" --sshkey "${script_dir}/../id_rsa.pub"
 qm set "${VM_ID}" --ciuser "damien"
 qm set "${VM_ID}" --ipconfig0 ip=dhcp
+qm set "${VM_ID}" --agent 1
 
 qm template "${VM_ID}"
 
