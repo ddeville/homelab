@@ -20,7 +20,7 @@ trap 'rm -f "${work_dir}/${UBUNTU_VERSION}-server-cloudimg-amd64.img"' EXIT
 
 pushd "${work_dir}"
 
-wget "https://cloud-images.ubuntu.com/${UBUNTU_VERSION}/current/${UBUNTU_VERSION}-server-cloudimg-amd64.img"
+curl -O "https://cloud-images.ubuntu.com/${UBUNTU_VERSION}/current/${UBUNTU_VERSION}-server-cloudimg-amd64.img"
 
 qm create "${VM_ID}" --memory 2048 --core 2 --name "${UBUNTU_VERSION}-cloud" --net0 virtio,bridge=vmbr0,firewall=1,tag="${VLAN}"
 
