@@ -6,8 +6,8 @@ setup:
 
 .PHONY: bootstrap
 bootstrap: setup
-	ansible-playbook playbooks/bootstrap.yml
+	ansible-playbook playbooks/bootstrap.yaml
 
 .PHONY: configure
 configure: setup
-	ansible-playbook playbooks/configure.yml
+	ansible-playbook playbooks/configure.yaml
