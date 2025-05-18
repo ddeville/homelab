@@ -1,6 +1,6 @@
 pfsense:
   hosts:
-    router:
+    router.local:
       ansible_host: 10.1.1.1
       ansible_port: 22
       ansible_user: damien
